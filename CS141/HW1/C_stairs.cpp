@@ -22,8 +22,15 @@ int main() {
         cin >> dummy;
         vals.push_back(dummy);
     }
+    int sz = vals.size();
     int diff = vals[1] - vals[0];
-    for(int i=1; i<vals.size(); i++)
+    int diff2 = vals[2] - vals[1];
+
+    if (diff != diff2)
+    {
+        diff = vals[3] - vals[2];
+    }
+    for(int i=1; i<sz; i++)
     {
         if ((vals[i] - vals[i-1]) != diff)
         {
