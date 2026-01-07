@@ -3,9 +3,9 @@
 using namespace std;
 
 int main() {
-    // // Fast IO
-    // ios_base::sync_with_stdio(false);
-    // cin.tie(0);
+    // Fast IO
+    ios_base::sync_with_stdio(false);
+    cin.tie(0);
 
     // int t = 1;
     // cin >> t; // Keep this line if there are multiple test cases per input 
@@ -28,13 +28,24 @@ int main() {
 
     if (diff != diff2)
     {
-        diff = vals[3] - vals[2];
+        diff = vals[4] - vals[3];
     }
     for(int i=1; i<sz; i++)
     {
         if ((vals[i] - vals[i-1]) != diff)
         {
-            cout << i+1;
+            if (i==1)
+            {
+                if (vals[0] + (2*diff) != vals[2])
+                {
+                    cout << "1";
+                }else{
+                    cout << "2";
+                }
+            }else{
+                cout << i+1;
+            }
+            
             break;
         }
     }
