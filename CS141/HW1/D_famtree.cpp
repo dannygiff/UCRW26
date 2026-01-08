@@ -27,29 +27,7 @@ int main() {
         traitors.push_back(dummy);
     }
 
-    //print debug
-    for (auto [key,val] : adj)
-    {
-        cout << endl << key << " : {";
-        for (auto x : val)
-        {
-            cout << x << " ";
-        }
-        cout << "}";
-    }
-    cout << "\nT: ";
-    for (auto tr : traitors)
-        cout << tr << " ";
-
-    //////////
-    //////////
-    // for (auto [key,val] : adj)
-    // {
-    //     for (int tr : traitors)
-    //     {
-    //         val.erase(tr);
-    //     }
-    // }
+    //remove traitors from graph
     for (int tr : traitors)
         adj.erase(tr);
     for (auto it = adj.begin(); it != adj.end(); ++it)
@@ -59,19 +37,10 @@ int main() {
             it->second.erase(tr);
         }
     }
-
-    for (auto [key,val] : adj)
-    {
-        cout << endl << key << " : {";
-        for (auto x : val)
-        {
-            cout << x << " ";
-        }
-        cout << "}";
-    }
-    
+   
     map <int, set<int>> comp = adj; //connected components
 
+    //find connected components
     for (auto [key, val] : adj)
     {
         for (auto x : val)
@@ -87,16 +56,8 @@ int main() {
             }
         }
     }
-    cout << "\nfinal tree:";
-    for (auto [key,val] : comp)
-    {
-        cout << endl << key << " : {";
-        for (auto x : val)
-        {
-            cout << x << " ";
-        }
-        cout << "}";
-    }
+
+    //find largest size
     set<int> sizes;
     for (auto [key,val] : comp)
     {
