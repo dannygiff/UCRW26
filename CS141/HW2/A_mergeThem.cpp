@@ -24,16 +24,9 @@ int main() {
         vals.push_back(dummy);
     }
 
-    cout << "before: ";
-    for(auto x : vals)
-        cout << x << " ";
-
     mergeSort(vals, 0, vals.size() - 1);
-    cout << "\nafter: ";
-    for(auto x : vals)
-        cout << x << " ";
     
-    cout << "\ncandies: " << candies;
+    cout << candies;
 }
 
 void mergeSort(vector<int> & arr, int l, int r)
@@ -52,8 +45,6 @@ void mergeSort(vector<int> & arr, int l, int r)
 
 void merge(vector<int> &arr, int l, int m, int r)
 {
-    cout << "\ncalled merge(arr, " << l << ", " << m << ", " << r << ") ";
-
     int nLeft = m - l + 1;
     vector<int> left(nLeft);
     for(int i=0; i<nLeft; i++)
@@ -61,20 +52,12 @@ void merge(vector<int> &arr, int l, int m, int r)
         left[i] = arr[l + i];
     }
 
-    cout << "\nleft: ";
-    for (auto x : left)
-        cout << x << " ";
-
     int nRight = r - m;
     vector<int> right(nRight);
     for(int i=0; i<nRight; i++)
     {
         right[i] = arr[m + i + 1]; //off by 1?
     }
-
-    cout << "\nright: ";
-    for (auto x : right)
-        cout << x << " ";
 
     int it1 = 0;//i
     int it2 = 0;//j
@@ -105,7 +88,6 @@ void merge(vector<int> &arr, int l, int m, int r)
     }
 
     //merge done, find candies
-    cout << "\nmerge done ";
     int min = *min_element(left.begin(), left.end());
     int temp = *min_element(right.begin(), right.end());
     if (temp < min)
@@ -115,7 +97,7 @@ void merge(vector<int> &arr, int l, int m, int r)
     temp = *max_element(right.begin(), right.end());
     if (temp > max)
         max = temp;
+        
     int diff = max - min;
-    cout << "\nadding " << diff << " candies";
     candies += diff;
 }
