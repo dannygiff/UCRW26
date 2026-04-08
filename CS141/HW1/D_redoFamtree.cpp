@@ -1,3 +1,5 @@
+// BFS & Queue implementation
+// keep track of queue size to find max connections
 // Includes the entire std library for C++
 #include <bits/stdc++.h>
 #include <vector>
@@ -41,7 +43,19 @@ int main() {
         }
     }
 
-    connect(adj); //connect components
+    map<int,bool> visited;
+    queue<int>roots;
+    for (auto [key, val] : adj)
+    {
+        roots.push(key);
+        while (!roots.empty()){
+            int loc = roots.front();
+            visited[loc] = true;
+            roots.pop();
+        }
+    }
+
+    //connect(adj); //connect components
 
     //find largest size
     int sz = 0;
